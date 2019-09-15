@@ -1,0 +1,138 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1>Topic/Text Summarizer</h1>
+
+
+<div class="container-fluid home-page">
+    {% if not summary_type and not summary %}
+    <form action="" method="POST" style="margin: auto;">
+    <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-4">
+                <button class="summary-type" type="submit" name="summary_type" value="topic">Topic</button>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4">
+                <button class="summary-type" type="submit" name="summary_type" value="text">Text</button>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4">
+                <button class="summary-type" type="submit" name="summary_type" value="url">URL</button>
+            </div>
+    </div>
+    </form>
+    {% endif %}
+    <div class="summary_type container-fluid">
+        {% if summary_type and (summary_type == "topic") %}
+        <div class="topic">
+            <form action="" method="POST">
+                <div class="row">
+                    <div class="col-4"></div>
+                    <div class="col-4">
+                        <span>What topic would you like summarized?</span>
+                    <br> <input type="text" name="topic_value">
+                    </div>
+                    <div class="col-4"></div>
+                </div>
+                <div class="row">
+                        <div class="col-4"></div>
+                        <div class="col-4">
+                                <span>Enter number of lines for summary </span>
+                                <br> <input type="text" name="num_of_lines">
+                        </div>
+                    <div class="col-4"></div>
+                </div>
+                <div class="row">
+                    <div class="col-4"></div>
+                    <div class="col-4">
+                        <button type="submit">Submit</button>
+                    </div>
+                    <div class="col-4"></div>
+                </div>
+            </form>
+        </div>
+        {% endif %}
+        {% if summary_type and (summary_type == "text") %}
+        <div class = "text">
+            <form action="" method="POST">
+                <div class="row">
+                    <div class="col-4"></div>
+                    <div class="col-4">
+                        <span>Enter text to be summarized</span>
+                        <br>
+                        <textarea name="text" id="" cols="90" rows="10"></textarea>
+                    </div>
+                    <div class="col-4"></div>
+                </div>
+                <div class="row">
+                        <div class="col-4"></div>
+                        <div class="col-4">
+                            <span>What is the topic of the text?</span>
+                        <br> <input type="text" name="text_topic">
+                        </div>
+                        <div class="col-4"></div>
+                    </div>
+                <div class="row">
+                        <div class="col-4"></div>
+                        <div class="col-4">
+                                <span>Enter number of lines for summary </span>
+                                <br> <input type="text" name="num_of_lines">
+                        </div>
+                    <div class="col-4"></div>
+                </div>
+                <div class="row">
+                        <div class="col-4"></div>
+                        <div class="col-4">
+                            <button type="submit">Submit</button>
+                        </div>
+                        <div class="col-4"></div>
+                    </div>
+                <div></div>
+            </form>
+        </div>
+        {% endif %}
+        {% if summary_type and (summary_type == "url") %}
+        <div class = "text">
+            <form action="" method="POST">
+                <div class="row">
+                    <div class="col-4"></div>
+                    <div class="col-4">
+                        <span>Enter url</span>
+                        <br>
+                        <input type="text" name="url">
+                    </div>
+                    <div class="col-4"></div>
+                </div>
+                <div class="row">
+                        <div class="col-4"></div>
+                        <div class="col-4">
+                            <span>What is the topic of the text in the url?</span>
+                        <br> <input type="text" name="url_topic">
+                        </div>
+                        <div class="col-4"></div>
+                    </div>
+                <div class="row">
+                        <div class="col-4"></div>
+                        <div class="col-4">
+                                <span>Enter number of lines for summary </span>
+                                <br> <input type="text" name="num_of_lines">
+                        </div>
+                    <div class="col-4"></div>
+                </div>
+                <div class="row">
+                        <div class="col-4"></div>
+                        <div class="col-4">
+                            <button type="submit">Submit</button>
+                        </div>
+                        <div class="col-4"></div>
+                    </div>
+                <div></div>
+            </form>
+        </div>
+        {% endif %}
+    </div>
+    {% if summary %}
+    <div class="summary container-fluid">
+        <p>{{summary}}</p>
+    </div>
+    {% endif %}
+</div>
+
+{% endblock content %}
