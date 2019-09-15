@@ -8,7 +8,7 @@ import stop_words
 import wikipedia
 import requests
 from nltk.corpus import wordnet
-import asyncio
+import os
 stop_words = stop_words.stopWords
 app = Flask(__name__)
 num_of_lines = 5
@@ -161,4 +161,5 @@ def main(summary_type, topic, num_of_lines, text, url_string):
         return summary
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(debug=True, port=port)
