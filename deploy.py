@@ -12,7 +12,6 @@ import os
 stop_words = stop_words.stopWords
 app = Flask(__name__)
 num_of_lines = 5
-nltk.download("punkt")
 
 @app.route("/", methods=["GET", "POST"])
 def home():
