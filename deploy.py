@@ -15,7 +15,6 @@ num_of_lines = 5
 
 @app.route("/", methods=["GET", "POST"])
 def home():
-    summary_type = "none"
     global summary, topic, num_of_lines, summary_type, text, url
     if request.method == 'GET':
         return render_template("home.html")
