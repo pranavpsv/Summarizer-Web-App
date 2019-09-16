@@ -12,10 +12,10 @@ import os
 stop_words = stop_words.stopWords
 app = Flask(__name__)
 num_of_lines = 5
-
+summary_type="none"
 @app.route("/", methods=["GET", "POST"])
 def home():
-    global summary, topic, num_of_lines, summary_type, text, url
+    global summary, topic, num_of_lines, text, url
     if request.method == 'GET':
         return render_template("home.html")
     elif request.method == "POST":
@@ -25,7 +25,6 @@ def home():
             return render_template("home.html", summary_type=summary_type)
         except:
             print("no summary")
-            summary_type = "topic"
         if (summary_type == "topic"):
             try:
                 request.form["topic_value"]
