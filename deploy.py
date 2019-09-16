@@ -15,16 +15,18 @@ num_of_lines = 5
 
 @app.route("/", methods=["GET", "POST"])
 def home():
+    summary_type = "none"
     global summary, topic, num_of_lines, summary_type, text, url
     if request.method == 'GET':
         return render_template("home.html")
-    else:
+    elif request.method == "POST":
         try:
             request.form["summary_type"]
             summary_type = request.form["summary_type"]
             return render_template("home.html", summary_type=summary_type)
         except:
             print("no summary")
+            summary_type = "topic"
         if (summary_type == "topic"):
             try:
                 request.form["topic_value"]
@@ -32,10 +34,10 @@ def home():
                 request.form["num_of_lines"]
                 num_of_lines = request.form["num_of_lines"]
                 summary = main(summary_type, topic, num_of_lines, "", "")
-                return render_template('home.html', summary=summary)
+                return render_template('summary.html', summary=summary)
             except:
                 summary = main(summary_type, topic, num_of_lines, "", "")
-                return render_template('home.html', summary=summary)
+                return render_template('summary.html', summary=summary)
         elif (summary_type == "text"):
             try:
                 request.form["text"]
@@ -43,10 +45,10 @@ def home():
                 topic = request.form["text_topic"]
                 num_of_lines = request.form["num_of_lines"]
                 summary = main(summary_type, topic, num_of_lines, text, "")
-                return render_template("home.html", summary=summary)
+                return render_template("summary.html", summary=summary)
             except:
                 summary = main(summary_type, topic, num_of_lines, text, "")
-                return render_template("home.html", summary=summary)
+                return render_template("summary.html", summary=summary)
         else:
             try:
                 request.form["url"]
@@ -54,10 +56,10 @@ def home():
                 topic = request.form["url_topic"]
                 num_of_lines = request.form["num_of_lines"]
                 summary = main(summary_type, topic, num_of_lines, "", url)
-                return render_template("home.html", summary=summary)
+                return render_template("summary.html", summary=summary)
             except:
                 summary = main(summary_type, topic, num_of_lines, "", url)
-                return render_template("home.html", summary=summary)    
+                return render_template("summary.html", summary=summary)    
 
 # Converts the topic url to text by parsing through html
 def scrape_page():
