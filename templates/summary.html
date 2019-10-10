@@ -1,4 +1,9 @@
 {% extends "layout.html" %}
 {% block content %}
-<p>{{summary}}</p>
+<div id="particles-js" style="position:fixed;width:100%;z-index:-10;"></div>
+<p class="display-4" style="color: white;">SummarizeIt</p>
+<div class="text">
+        <p style="font-size: 14px;">{{summary}}</p>
+</div>
+<script src="{{ url_for('static', filename='index.js') }}"></script>
 {% endblock content %}
