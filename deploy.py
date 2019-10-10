@@ -30,10 +30,10 @@ def home():
                 request.form["num_of_lines"]
                 num_of_lines = request.form["num_of_lines"]
                 summary = main(summary_type, topic, num_of_lines, "", "")
-                return render_template('summary.html', summary=summary)
+                return render_template('home.html', summary=summary)
             except:
                 summary = main(summary_type, topic, num_of_lines, "", "")
-                return render_template('summary.html', summary=summary)
+                return render_template('home.html', summary=summary)
         elif (summary_type == "text"):
             try:
                 request.form["text"]
@@ -41,10 +41,10 @@ def home():
                 topic = request.form["text_topic"]
                 num_of_lines = request.form["num_of_lines"]
                 summary = main(summary_type, topic, num_of_lines, text, "")
-                return render_template("summary.html", summary=summary)
+                return render_template("home.html", summary=summary)
             except:
                 summary = main(summary_type, topic, num_of_lines, text, "")
-                return render_template("summary.html", summary=summary)
+                return render_template("home.html", summary=summary)
         else:
             try:
                 request.form["url"]

@@ -130,7 +130,14 @@
             </div>
             {% if summary %}
             <div class="summary container-fluid">
-                <p>{{summary}}</p>
+                <div class="row">
+                    <div class="col-4"></div>
+                    <div class="col-4">
+                        <p>{{summary}}</p>
+                    </div>
+                    <div class="col-4"></div>
+                </div>
+                
             </div>
             {% endif %}
         </div>
